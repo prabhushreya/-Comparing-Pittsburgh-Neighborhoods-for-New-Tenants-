@@ -1,0 +1,53 @@
+import pandas as pd
+import numpy as np
+import random as rd
+import matplotlib.pyplot as plt
+
+#reading file into python
+loc = pd.read_excel('C:\\Users\\shrey\\Projects\\test.xlsx')
+
+#Creating a list of table headers
+a = list(loc)
+a
+
+#Testing plots
+%matplotlib inline
+x = np.arange(5)
+#df = [loc['Neighborhood'], loc['Theft'],loc['Harassment'], loc['accident']]
+df = [rd.sample((range(1,20)),5), rd.sample((range(1,20)),5), rd.sample((range(1,20)),5),]
+df
+
+y = loc.shape
+y[0]
+
+y = loc.shape
+x = np.arange(loc.shape[0])
+plt.bar(x + 0.00, df[0], width = 0.2, color = ("b"), label = a[0])
+plt.bar(x + 0.2, df[1], width = 0.2, color = ("r"), label = a[1])
+plt.bar(x + 0.4, df[2], width = 0.2, color = ("m"), label = a[2])
+plt.xlabel(list(loc)[0])
+plt.legend(fontsize = 6)
+plt.xticks(x,loc['Neighborhood'] )
+plt.title("Viz", font = 20)
+#plt.ylabel(list(loc)[1])
+plt.show()
+
+plt.bar(loc['Neighborhood'],loc['Theft'], width = 0.2, color = ("b"))
+plt.bar(loc['Neighborhood'],loc['Harassment'], width = 0.2, color = ("r"))
+plt.bar(loc['Neighborhood'],loc['accident'], width = 0.2, color = ("y"))
+plt.xlabel(list(loc)[0])
+#plt.ylabel(list(loc)[1])
+plt.show()
+
+
+#Pivot
+
+count_311 = pd.pivot_table(og_311, values = 'REQUEST_ID',
+		   index = 'NEIGHBORHOOD', columns = 'REQUEST_TYPE')
+
+
+x = np.arange(three.shape[0])
+plt.bar(x + 0.00, three[1], width = 0.2, color = ("b"), label = "Disturbances")
+plt.bar(x + 0.2, three[2], width = 0.2, color = ("r"), label = "Potholes")
+plt.bar(x + 0.4, three[3], width = 0.2, color = ("m"), label = "Landlord Problems")
+plt.show()

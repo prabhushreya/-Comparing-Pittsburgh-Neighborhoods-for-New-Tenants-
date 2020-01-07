@@ -1,0 +1,17 @@
+df = pd.read_csv('Projects\CrimeData.csv')
+
+df
+df.head()
+df = df.rename(columns = {"CCR": "Incident Number", "INCIDENTTIME":"Time", "INCIDENT LOCATION":"Loc", "CLEAREDFLAG":"Clear Flag?","INCIDENTHIERARCHYDESC":"He
+    ...: irarchy Description"."INCIDENTZONE":"Zone" ,"INCIDENTNEIGHBORHOOD": "Neighborhood"})
+
+**Checking for NaN values in Neighborhood column 
+df.Neighborhood[pd.isnull(df.Neighborhood)]
+
+**remove rows with null values in neighborhood column 
+df.dropna(subset = ['Neighborhood'])
+
+**filtered neighborhoods, if needed
+df_filtered = df[df['Neighborhood'] == ('North Oakland','Shadyside','Squirill Hill North','Squirill Hill South')]
+
+

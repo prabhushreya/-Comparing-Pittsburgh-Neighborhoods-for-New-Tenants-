@@ -1,0 +1,96 @@
+import pandas as pd
+import numpy as np
+import random as rd
+import matplotlib.pyplot as plt
+import csv
+
+plt.style.use('ggplot')
+plt.rcParams['figure.figsize'] = (10,6)
+
+#Plots
+#Median Rent
+
+#reading file into python
+#data = pd.read_csv("MEDIANCraigslistData.csv")
+#print(data.head())
+
+plt.scatter(data['Location'], data['Median'])
+
+#Add user input
+plt.axhline(y=1000, color='r')
+plt.ylabel("Median Rent")
+plt.xlabel("Neighborhood")
+plt.title("Median Rent in Pittsburgh Neighborhoods", fontsize = 10)
+plt.show()
+
+#crime
+
+crime = pd.read_csv('Data\\DataCrimeCounted.csv')
+print(crime)
+
+
+plt.bar(crime['INCIDENTNEIGHBORHOOD'],crime['OFFENSES'], width = 0.2, color = ("b"))
+plt.ylabel("Number of Offenses")
+plt.xlabel("Neighborhood")
+plt.title("Crime Comparison for Neighborhoods", fontsize = 10)
+plt.show()
+
+#311
+
+three = pd.read_csv('Data\\Data311Counted.csv')
+
+print(three)
+
+y = three.shape
+print(y[0])
+
+
+three.plot.bar(x='NEIGHBORHOOD')
+plt.ylabel("Number of Crimes")
+plt.xlabel("Neighborhood")
+plt.title("Crime in Pittsburgh Neighborhoods", fontsize = 10)
+plt.show()
+
+
+#Hospital
+
+
+hosp = pd.read_csv('dfHospitals.csv')
+hosp.columns = ['Neighborhood', 'Number']
+
+print(hosp)
+
+
+plt.style.use('ggplot')
+plt.rcParams['figure.figsize'] = (40,10)
+
+
+plt.bar(hosp['Neighborhood'], hosp['Number'], width = 0.2, color = ("b"))
+plt.ylabel("Number of Hospitals")
+plt.xlabel("Neighborhood")
+plt.title("Hospitals in Pittsburgh Neighborhoods", fontsize = 20)
+plt.show()
+
+#Restaurants
+
+rest = pd.read_csv('df_rest_all.csv')
+#hosp.columns = ['Neighborhood', 'Number']
+
+print(rest)
+
+
+plt.style.use('ggplot')
+plt.rcParams['figure.figsize'] = (40,10)
+
+
+yaxis = ['least', 'average', 'pretty_good', 'great', 'top_ten']
+yaxis
+#Create remaining parameters and initiate plot
+xaxis = ['least favorite', 'average', 'pretty good', 'great', 'top_ten']
+plt.bar(xaxis,yaxis)
+plt.xlabel('Restaurant Category')
+plt.ylabel('Count of Restaurants')
+plt.title('A Restaurant Chart You May or May Not Like')
+plt.show()
+
+
